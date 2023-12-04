@@ -6,7 +6,7 @@ namespace AdventOfCode.Tests;
 public class DayTests
 {
     [Fact]
-    public void Day01_01_Test1()
+    public async Task Day01_01_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -19,13 +19,12 @@ public class DayTests
         var day = new Day01();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_1()
-                        .Result;
+        var result = await day.Solve_1();
         result.ShouldBe("142");
     }
 
     [Fact]
-    public void Day01_02_Test1()
+    public async Task Day01_02_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -41,13 +40,12 @@ public class DayTests
         var day = new Day01();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_2()
-                        .Result;
+        var result =await day.Solve_2();
         result.ShouldBe("281");
     }
 
     [Fact]
-    public void Day02_01_Test1()
+    public async Task Day02_01_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -61,13 +59,12 @@ public class DayTests
         var day = new Day02();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_1()
-                        .Result;
+        var result = await day.Solve_1();
         result.ShouldBe("8");
     }
 
     [Fact]
-    public void Day02_02_Test1()
+    public async Task Day02_02_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -81,13 +78,12 @@ public class DayTests
         var day = new Day02();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_2()
-                        .Result;
+        var result = await day.Solve_2();
         result.ShouldBe("2286");
     }
 
     [Fact]
-    public void Day03_01_Test1()
+    public async Task Day03_01_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -106,13 +102,12 @@ public class DayTests
         var day = new Day03();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_1()
-                        .Result;
+        var result = await day.Solve_1();
         result.ShouldBe("4361");
     }
     
     [Fact]
-    public void Day03_02_Test1()
+    public async Task Day03_02_Test1()
     {
         var strList = string.Join("\r\n", new List<string>
         {
@@ -131,8 +126,47 @@ public class DayTests
         var day = new Day03();
         day.IsTest = true;
         day.TestInput = strList;
-        var result = day.Solve_2()
-                        .Result;
+        var result = await day.Solve_2();
         result.ShouldBe("467835");
+    }
+    
+    [Fact]
+    public async Task Day04_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
+            "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19",
+            "Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1",
+            "Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83",
+            "Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36",
+            "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
+        });
+
+        var day = new Day04();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("13");
+    }
+    
+    [Fact]
+    public async Task Day04_02_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
+            "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19",
+            "Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1",
+            "Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83",
+            "Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36",
+            "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
+        });
+
+        var day = new Day04();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_2();
+        result.ShouldBe("30");
     }
 }
