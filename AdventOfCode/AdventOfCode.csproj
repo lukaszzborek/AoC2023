@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <PackageReference Include="AoCHelper" Version="3.0.0"/>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.10"/>
     </ItemGroup>
 
     <PropertyGroup>
@@ -22,7 +22,10 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="Inputs\04.txt">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Inputs\05.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
