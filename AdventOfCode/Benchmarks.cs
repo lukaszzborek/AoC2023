@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
@@ -7,11 +6,8 @@ namespace AdventOfCode;
 [MemoryDiagnoser]
 public class Benchmarks
 {
-    public Benchmarks()
-    {
-    }
-    
-    
+
+
     // [Benchmark]
     // public async Task<string> Day03WithLoading()
     // {
@@ -32,11 +28,25 @@ public class Benchmarks
     //     var day = new Day04();
     //     return await day.Solve_2();
     // }
-    
+
+    // [Benchmark]
+    // public async Task<string> Day05_01_WithLoading()
+    // {
+    //     var day = new Day05();
+    //     return await day.Solve_1();
+    // }
+
     [Benchmark]
-    public async Task<string> Day05_01_WithLoading()
+    public async Task<string> Day06_Part1_WithLoading()
     {
-        var day = new Day05();
+        var day = new Day06();
         return await day.Solve_1();
+    }
+
+    [Benchmark]
+    public async Task<string> Day06_Part2_WithLoading()
+    {
+        var day = new Day06();
+        return await day.Solve_2();
     }
 }

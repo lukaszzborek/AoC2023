@@ -216,7 +216,7 @@ public class DayTests
         var result = await day.Solve_1();
         result.ShouldBe("35");
     }
-    
+
     [Fact]
     public async Task Day05_02_Test1()
     {
@@ -262,5 +262,37 @@ public class DayTests
         day.TestInput = strList;
         var result = await day.Solve_2();
         result.ShouldBe("46");
+    }
+
+    [Fact]
+    public async Task Day06_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "Time:      7  15   30",
+            "Distance:  9  40  200"
+        });
+
+        var day = new Day06();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("288");
+    }
+
+    [Fact]
+    public async Task Day06_02_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "Time:      7  15   30",
+            "Distance:  9  40  200"
+        });
+
+        var day = new Day06();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_2();
+        result.ShouldBe("71503");
     }
 }
