@@ -295,4 +295,42 @@ public class DayTests
         var result = await day.Solve_2();
         result.ShouldBe("71503");
     }
+
+    [Fact]
+    public async Task Day07_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "32T3K 765",
+            "T55J5 684",
+            "KK677 28",
+            "KTJJT 220",
+            "QQQJA 483"
+        });
+
+        var day = new Day07();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("6440");
+    }
+
+    [Fact]
+    public async Task Day07_02_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "32T3K 765",
+            "T55J5 684",
+            "KK677 28",
+            "KTJJT 220",
+            "QQQJA 483"
+        });
+
+        var day = new Day07();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_2();
+        result.ShouldBe("5905");
+    }
 }

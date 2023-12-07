@@ -36,17 +36,31 @@ public class Benchmarks
     //     return await day.Solve_1();
     // }
 
+    // [Benchmark]
+    // public async Task<string> Day06_Part1_WithLoading()
+    // {
+    //     var day = new Day06();
+    //     return await day.Solve_1();
+    // }
+    //
+    // [Benchmark]
+    // public async Task<string> Day06_Part2_WithLoading()
+    // {
+    //     var day = new Day06();
+    //     return await day.Solve_2();
+    // }
+
     [Benchmark]
-    public async Task<string> Day06_Part1_WithLoading()
+    public async Task<string> Day07_Part1_WithLoading()
     {
-        var day = new Day06();
+        var day = new Day07();
         return await day.Solve_1();
     }
 
     [Benchmark]
-    public async Task<string> Day06_Part2_WithLoading()
+    public async Task<string> Day07_Part2_WithLoading()
     {
-        var day = new Day06();
+        var day = new Day07();
         return await day.Solve_2();
     }
 }
