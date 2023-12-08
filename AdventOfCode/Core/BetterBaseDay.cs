@@ -7,7 +7,7 @@ public abstract class BetterBaseDay : BaseDay
 {
     public bool IsTest { get; set; } = false;
     public string TestInput { get; set; }
-    protected string InputData => GetData();
+    public string InputData => GetData();
 
     private string GetData()
     {

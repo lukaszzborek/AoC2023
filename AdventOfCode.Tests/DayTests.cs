@@ -333,4 +333,70 @@ public class DayTests
         var result = await day.Solve_2();
         result.ShouldBe("5905");
     }
+
+    [Fact]
+    public async Task Day08_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "RL",
+            "",
+            "AAA = (BBB, CCC)",
+            "BBB = (DDD, EEE)",
+            "CCC = (ZZZ, GGG)",
+            "DDD = (DDD, DDD)",
+            "EEE = (EEE, EEE)",
+            "GGG = (GGG, GGG)",
+            "ZZZ = (ZZZ, ZZZ)"
+        });
+
+        var day = new Day08();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("2");
+    }
+
+    [Fact]
+    public async Task Day08_01_Test2()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "LLR",
+            "",
+            "AAA = (BBB, BBB)",
+            "BBB = (AAA, ZZZ)",
+            "ZZZ = (ZZZ, ZZZ)"
+        });
+
+        var day = new Day08();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("6");
+    }
+
+    [Fact]
+    public async Task Day08_02_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "LR",
+            "",
+            "11A = (11B, XXX)",
+            "11B = (XXX, 11Z)",
+            "11Z = (11B, XXX)",
+            "22A = (22B, XXX)",
+            "22B = (22C, 22C)",
+            "22C = (22Z, 22Z)",
+            "22Z = (22B, 22B)",
+            "XXX = (XXX, XXX)"
+        });
+
+        var day = new Day08();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_2();
+        result.ShouldBe("6");
+    }
 }
