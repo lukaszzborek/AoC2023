@@ -449,4 +449,19 @@ public class DayTests
         var result = await day.Solve_2();
         result.ShouldBe("1118");
     }
+    
+    [Fact]
+    public async Task Day09_01_RealData_2()
+    {
+        var day = new Day09();
+        day.PrepareData();
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+        (await day.Solve_1_OnlyLogic()).ShouldBe("2043183816");
+    }
 }

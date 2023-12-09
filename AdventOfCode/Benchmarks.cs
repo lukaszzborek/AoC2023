@@ -6,7 +6,13 @@ namespace AdventOfCode;
 [MemoryDiagnoser]
 public class Benchmarks
 {
-
+    private Day09 _day;
+    public Benchmarks()
+    {
+        _day = new Day09();
+        _day.PrepareData();
+    }
+    
     // [Benchmark]
     // public async Task<string> Day03WithLoading()
     // {
@@ -104,11 +110,29 @@ public class Benchmarks
         var day = new Day09();
         return await day.Solve_1();
     }
-
+    
     [Benchmark]
     public async Task<string> Day09_Part2_WithLoading()
     {
         var day = new Day09();
         return await day.Solve_2();
+    }
+    
+    // [Benchmark]
+    // public void Day09_Part1_Prepare()
+    // {
+    //     _day.PrepareData();
+    // }
+    //
+    // [Benchmark]
+    // public void Day09_Part1_PrepareSpan()
+    // {
+    //     _day.PrepareDataSpan();
+    // }
+    
+    [Benchmark]
+    public async Task<string> Day09_Part1_OnlyLogic()
+    {
+        return await _day.Solve_1_OnlyLogic();
     }
 }
