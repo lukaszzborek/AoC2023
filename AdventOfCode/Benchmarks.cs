@@ -83,18 +83,32 @@ public class Benchmarks
     // {
     //     return new Day07.Hand("32T3K 765".AsSpan());
     // }
-    
+
+    // [Benchmark]
+    // public async Task<string> Day08_Part1_WithLoading()
+    // {
+    //     var day = new Day08();
+    //     return await day.Solve_1();
+    // }
+    //
+    // [Benchmark]
+    // public async Task<string> Day08_Part2_WithLoading()
+    // {
+    //     var day = new Day08();
+    //     return await day.Solve_2();
+    // }
+
     [Benchmark]
-    public async Task<string> Day08_Part1_WithLoading()
+    public async Task<string> Day09_Part1_WithLoading()
     {
-        var day = new Day08();
+        var day = new Day09();
         return await day.Solve_1();
     }
 
     [Benchmark]
-    public async Task<string> Day08_Part2_WithLoading()
+    public async Task<string> Day09_Part2_WithLoading()
     {
-        var day = new Day08();
+        var day = new Day09();
         return await day.Solve_2();
     }
 }

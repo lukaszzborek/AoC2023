@@ -399,4 +399,54 @@ public class DayTests
         var result = await day.Solve_2();
         result.ShouldBe("6");
     }
+
+    [Fact]
+    public async Task Day09_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "0 3 6 9 12 15",
+            "1 3 6 10 15 21",
+            "10 13 16 21 30 45"
+        });
+
+        var day = new Day09();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("114");
+    }
+
+    [Fact]
+    public async Task Day09_02_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "0 3 6 9 12 15",
+            "1 3 6 10 15 21",
+            "10 13 16 21 30 45"
+        });
+
+        var day = new Day09();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_2();
+        result.ShouldBe("2");
+    }
+
+    [Fact]
+    public async Task Day09_01_RealData()
+    {
+        var day = new Day09();
+        var result = await day.Solve_1();
+        result.ShouldBe("2043183816");
+    }
+
+    [Fact]
+    public async Task Day09_02_RealData()
+    {
+        var day = new Day09();
+        var result = await day.Solve_2();
+        result.ShouldBe("1118");
+    }
 }
