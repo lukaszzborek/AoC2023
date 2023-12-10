@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using AdventOfCode.Core;
@@ -32,6 +32,9 @@ public class Day10 : BetterBaseDay
                     startingPoint = point;
             }
         }
+        
+        if (startingPoint == null)
+            throw new InvalidDataException("Starting point not found");
 
         foreach (var point in pointsDictionary.Values)
         {
@@ -98,6 +101,9 @@ public class Day10 : BetterBaseDay
         AddMiddlePoints(pointsDictionary);
         Print(pointsDictionary);
         Console.WriteLine("------------------------------------");
+        if (startingPoint == null)
+            throw new InvalidDataException("Starting point not found");
+        
         foreach (var point in pointsDictionary.Values)
         {
             if (point.Value == Connections.Starting || point.Value == Connections.None)
@@ -217,31 +223,14 @@ public class Day10 : BetterBaseDay
                 break;
         } while (true);
 
-        // foreach (var pointDict in pointsDictionary)
-        // {
-        //     var point = pointDict.Value;
-        //     if (point.Value != Connections.None || point.IsChecked)
-        //         continue;
-        //
-        //     if (point.X == 0 || point.Y == 0)
-        //         point.IsOutside = true;
-        //     else
-        //         CheckPoint(pointsDictionary, point,  null, 0.5);
-        // }
-
-
         var result =
-            pointsDictionary.Values.Count(x => /*x.Value == Connections.None &&*/ !x.IsOutside && !x.IsVisitedPipe && !x.IsMiddle);
-
-        var lists = pointsDictionary.Values.OrderBy(x => x.Y)
-                                    .ThenBy(x => x.X)
-                                    .ToList();
+            pointsDictionary.Values.Count(x =>  !x.IsOutside && !x.IsVisitedPipe && !x.IsMiddle);
+        
         Print(pointsDictionary);
         return new ValueTask<string>(result.ToString());
     }
     private static void Print(Dictionary<Point, Point> pointsDictionary)
     {
-
         var t = pointsDictionary.Values.Select(x => x.Y)
                                 .Distinct()
                                 .Order()
@@ -347,24 +336,9 @@ public class Day10 : BetterBaseDay
             case Direction.West:
                 point.SetValue(GetConnectionBetweenPointsInDirection(prevPoint.Value, nextPoint.Value, Direction.West));
                 break;
-            default: throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
         }
 
         pointsDictionary.Add(point, point);
-
-        // if (nextPoint.X == prevPoint.X && nextPoint.Y != prevPoint.Y)
-        // {
-        //     
-        //     pointsDictionary.Add(point, new Point(point.X, point.Y, nextPoint.OriginalValue));
-        //     
-        // }
-        //
-        //
-        // else
-        // {
-        //     
-        //     pointsDictionary.Add(point, new Point(point.X, point.Y, '|'));
-        // }
     }
 
     private Connections GetConnectionBetweenPointsInDirection(Connections point1, Connections point2,
@@ -400,11 +374,9 @@ public class Day10 : BetterBaseDay
 
                 return Connections.None;
             case Direction.South:
-                if (point1 is Connections.SouthEast or Connections.SouthWest or Connections.NorthSouth)
-                {
-                    if (point2 == Connections.NorthSouth || point2 == Connections.NorthWest || point2 == Connections.NorthEast || point2 == Connections.Starting)
-                        return Connections.NorthSouth;
-                }
+                if (point1 is Connections.SouthEast or Connections.SouthWest or Connections.NorthSouth 
+                    && point2 is Connections.NorthSouth or Connections.NorthWest or Connections.NorthEast or Connections.Starting)
+                    return Connections.NorthSouth;
 
                 if (point1 is Connections.Starting && point2 is Connections.NorthSouth or Connections.NorthEast or Connections.NorthWest)
                     return Connections.NorthSouth;
@@ -418,8 +390,6 @@ public class Day10 : BetterBaseDay
                 return Connections.None;
             default: throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
         }
-
-        return Connections.None;
     }
 
     private void CheckPoint(Dictionary<Point, Point> pointsDictionary, Point point, HashSet<Point> visited = null,
@@ -473,9 +443,6 @@ public class Day10 : BetterBaseDay
                 currentPoint.IsChecked = true;
                 return false;
             }
-
-            // if (currentPoint.IsChecked)
-            //     return currentPoint.IsOutside;
             
             if(currentPoint.IsOutside)
                 return true;
@@ -494,7 +461,7 @@ public class Day10 : BetterBaseDay
     }
 
     [DebuggerDisplay("x = {X}, y = {Y}, orig = {OriginalValue}, value = {Value}")]
-    private class Point
+    private sealed class Point
     {
         public double X { get; }
         public double Y { get; }
@@ -584,18 +551,9 @@ public class Day10 : BetterBaseDay
 
         public string GetPipe()
         {
-            // if(IsVisitedPipe)
-            //     return "X";
-            //
-
-            // if (Value == Connections.None && IsChecked)
-            // {
-            //     return "A";
-            // }
-                
             return Value switch
             {
-                Connections.None => IsOutside /*|| IsMiddle*/ ? " " : "0",
+                Connections.None => IsOutside ? " " : "0",
                 Connections.Starting => "S",
                 Connections.NorthSouth => "│",
                 Connections.EastWest => "─",
