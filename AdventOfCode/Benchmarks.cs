@@ -104,19 +104,19 @@ public class Benchmarks
     //     return await day.Solve_2();
     // }
 
-    [Benchmark]
-    public async Task<string> Day09_Part1_WithLoading()
-    {
-        var day = new Day09();
-        return await day.Solve_1();
-    }
-    
-    [Benchmark]
-    public async Task<string> Day09_Part2_WithLoading()
-    {
-        var day = new Day09();
-        return await day.Solve_2();
-    }
+    // [Benchmark]
+    // public async Task<string> Day09_Part1_WithLoading()
+    // {
+    //     var day = new Day09();
+    //     return await day.Solve_1();
+    // }
+    //
+    // [Benchmark]
+    // public async Task<string> Day09_Part2_WithLoading()
+    // {
+    //     var day = new Day09();
+    //     return await day.Solve_2();
+    // }
     
     // [Benchmark]
     // public void Day09_Part1_Prepare()
@@ -130,9 +130,16 @@ public class Benchmarks
     //     _day.PrepareDataSpan();
     // }
     
+    // [Benchmark]
+    // public async Task<string> Day09_Part1_OnlyLogic()
+    // {
+    //     return await _day.Solve_1_OnlyLogic();
+    // }
+    
     [Benchmark]
-    public async Task<string> Day09_Part1_OnlyLogic()
+    public async Task<string> Day10_Part1_WithLoading()
     {
-        return await _day.Solve_1_OnlyLogic();
+        var day = new Day10();
+        return await day.Solve_1();
     }
 }

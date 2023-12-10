@@ -4,8 +4,9 @@ using AdventOfCode;
 using AoCHelper;
 using BenchmarkDotNet.Running;
 
-BenchmarkRunner.Run<Benchmarks>();
-return;
+
+// BenchmarkRunner.Run<Benchmarks>();
+// return;
 
 if (args.Length == 0)
 {
