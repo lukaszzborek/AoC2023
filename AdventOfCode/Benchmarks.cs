@@ -136,10 +136,24 @@ public class Benchmarks
     //     return await _day.Solve_1_OnlyLogic();
     // }
     
+    // [Benchmark]
+    // public async Task<string> Day10_Part1_WithLoading()
+    // {
+    //     var day = new Day10();
+    //     return await day.Solve_1();
+    // }
+    
     [Benchmark]
-    public async Task<string> Day10_Part1_WithLoading()
+    public async Task<string> Day11_Part1_WithLoading()
     {
-        var day = new Day10();
+        var day = new Day11();
         return await day.Solve_1();
+    }
+    
+    [Benchmark]
+    public async Task<string> Day11_Part2_WithLoading()
+    {
+        var day = new Day11();
+        return await day.Solve_2();
     }
 }

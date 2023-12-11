@@ -604,4 +604,83 @@ public class DayTests
         var result = await day.Solve_2();
         result.ShouldBe("10");
     }
+
+    [Fact]
+    public async Task Day11_01_Test1()
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "...#......",
+            ".......#..",
+            "#.........",
+            "..........",
+            "......#...",
+            ".#........",
+            ".........#",
+            "..........",
+            ".......#..",
+            "#...#....."
+        });
+
+        var day = new Day11();
+        day.IsTest = true;
+        day.TestInput = strList;
+        var result = await day.Solve_1();
+        result.ShouldBe("374");
+    }
+    
+    [Theory]
+    [InlineData(1, 6, 5,11,9)]
+    [InlineData(4, 0, 9,10,15)]
+    [InlineData(0, 2, 12,7,17)]
+    [InlineData(0, 11, 5,11,5)]
+    [InlineData(2, 15, 26,14,25)]
+    public void Day11_01_Test2(int x1, int y1, int x2, int y2, int expected)
+    {
+        var day = new Day11();
+        day.Steps(new Day11.Point(x1, y1), new Day11.Point(x2, y2)).ShouldBe(expected);
+    }
+    
+    [Fact]
+    public async Task Day11_01_RealData()
+    {
+        var day = new Day11();
+        var result = await day.Solve_1();
+        result.ShouldBe("9521550");
+    }
+    
+    [Theory]
+    [InlineData(10, 1030)]
+    [InlineData(100, 8410)]
+    public async Task Day11_02_Test1(int scale, int expected)
+    {
+        var strList = string.Join("\r\n", new List<string>
+        {
+            "...#......",
+            ".......#..",
+            "#.........",
+            "..........",
+            "......#...",
+            ".#........",
+            ".........#",
+            "..........",
+            ".......#..",
+            "#...#....."
+        });
+
+        var day = new Day11();
+        day.IsTest = true;
+        day.TestInput = strList;
+        day.Scale = scale;
+        var result = await day.Solve_1();
+        result.ShouldBe(expected.ToString());
+    }
+    
+    [Fact]
+    public async Task Day11_02_RealData()
+    {
+        var day = new Day11();
+        var result = await day.Solve_2();
+        result.ShouldBe("298932923702");
+    }
 }
